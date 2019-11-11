@@ -14,7 +14,7 @@ for (var i = 0; i < squares.length; i++)
     squares[i].addEventListener('click', onClick);
 }
 
-function OnClick(event)
+function onClick(event)
 {
     event.preventDefault();
     if (!event.target.innerText)
