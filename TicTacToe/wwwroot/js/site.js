@@ -72,3 +72,31 @@ function checkForWin()
     return false;
     
 }
+
+var squares = document.getElementsByClassName("#checkers-board > .square");
+for (var i = 0; i < squares.length; i++) {
+    squares[i].addEventListener('dragenter', onDragEnter);
+    squares[i].addEventListener('dragleave', onDragLeave);
+    squares[i].addEventListener('dragstart', onDragStart);
+    squares[i].addEventListener('dragend', onDragEnd);
+}
+
+function onDragEnter(event) {
+    if (event.target.classList.contains("checker")) return;
+    if (event.target.classList.contains("red")) return;
+    if (event.target.children.length > 0) return;
+    event.target.style.backgroundColor = "gold";
+}
+
+function onDragLeave(event) {
+    event.target.style.backgroundColor = null;
+}
+
+function onDragStart(event) {
+    document.getElementById("fromX").value = event.target.dataset.x;
+    document.getElementById("fromY").value = event.target.dataset.y;
+}
+
+function onDragEnd(event) {
+    document.getElementByName("checkers-form").submit();
+}
